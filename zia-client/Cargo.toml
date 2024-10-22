@@ -1,6 +1,6 @@
 [package]
 name = "zia-client"
-version = "0.0.0-git"
+version = "0.2.9-helsinki"
 edition = "2021"
 authors = ["Marcel <https://m4rc3l.de>"]
 license = "AGPL-3.0"
@@ -24,6 +24,14 @@ pin-project-lite = { version = "0.2", default-features = false }
 anyhow = { version = "1.0", default-features = false }
 hyper-util = { version = "0.1", features = ["tokio"] }
 hyper = { version = "1.4", default-features = false }
+
+[package.metadata.deb]
+maintainer-scripts = "debian/"
+systemd-units = { enable = false }
+assets = [
+  ["target/release/zia-client", "/usr/bin/zia-client", "755"],
+  ["debian/default", "/etc/zia-client", "644"]
+]
 
 [package.metadata.generate-rpm]
 assets = [
