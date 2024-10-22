@@ -1,0 +1,12 @@
+[Unit]
+Description=Proxy udp over websocket, zia client
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/zia-client
+EnvironmentFile=/etc/zia-client
+
+[Install]
+WantedBy=multi-user.target

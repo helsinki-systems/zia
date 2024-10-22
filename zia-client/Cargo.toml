@@ -25,6 +25,14 @@ anyhow = { version = "1.0", default-features = false }
 hyper-util = { version = "0.1", features = ["tokio"] }
 hyper = { version = "1.4", default-features = false }
 
+[package.metadata.deb]
+maintainer-scripts = "debian/"
+systemd-units = { enable = false }
+assets = [
+  ["target/release/zia-client", "/usr/bin/zia-client", "755"],
+  ["debian/default", "/etc/zia-client", "644"]
+]
+
 [package.metadata.generate-rpm]
 assets = [
   { source = "../LICENSE", dest = "/usr/share/doc/zia-client/LICENSE", doc = true, mode = "0644" },
